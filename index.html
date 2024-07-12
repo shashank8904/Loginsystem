@@ -1,0 +1,126 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+
+    {% for message in messages %}
+    <div class="aleart aleart-{{ message.tags}} aleart-dismissible fade show" role="alert">
+    <strong>Message: </strong> {{ message }}
+    <button type="button" class="close" data-dismiss="aleart" atia-label="Close"></button>
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    {% endfor %}
+
+    <h1>Welcome to the Webpage</h1>
+
+    {% if user.is_authenticated%}
+    <h2>Hello...</h2>
+    <h3>You're Succesfully Logged In</h3>
+    <button><a href="signout">Signout</a></button>
+
+    {% else %}
+    <button><a href="signup">Signup</a></button>
+    <button><a href="signin">Signin</a></button>
+    {% endif %}
+   
+
+
+
+</body>
+</html> {% endcomment %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+            max-width: 900px;
+        }
+        .alert {
+            margin-top: 20px;
+        }
+        h1 {
+            color: #343a40;
+            text-align: center;
+            margin-top: 20px;
+        }
+        h2, h3 {
+            text-align: center;
+            color: #495057;
+        }
+        .btn-custom {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+        }
+        .header {
+            background-color: #343a40;
+            padding: 10px 0;
+            color: white;
+            text-align: center;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Company Name</h1>
+    </div>
+
+    <div class="container">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            <strong>Message: </strong> {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+
+        <h1>Welcome to the Webpage</h1>
+
+        {% if user.is_authenticated %}
+        <h2>Hello...</h2>
+        <h3>You're Successfully Logged In</h3>
+        <a href="signout" class="btn btn-danger btn-custom">Signout</a>
+        {% else %}
+        <a href="signup" class="btn btn-primary btn-custom">Signup</a>
+        <a href="signin" class="btn btn-success btn-custom">Signin</a>
+        {% endif %}
+    </div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
